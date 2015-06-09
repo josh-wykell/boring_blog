@@ -1,0 +1,10 @@
+<h1>Boring Yawn..</h1>
+
+<h2>This blog is about really boring things.</h2>
+
+<ul>
+  <% @recent_posts.each do |post| %>
+    <li><%= post.title %>
+        <%= post.img %>
+    </li>
+</ul>
