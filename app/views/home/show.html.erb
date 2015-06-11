@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= @post.title %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @post.body %></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.body %></p>
+      <p class="author">by <%= comment.author %> on <%= comment.created_at.to_s(:short) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_for(@post.comments.new) do |f| %>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

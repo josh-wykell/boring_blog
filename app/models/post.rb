@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
-  has:many :comments
+  has_many :comments
   accepts_nested_attributes_for :comments
+  belongs_to :user
 end

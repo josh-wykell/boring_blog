@@ -4,7 +4,14 @@
 
 <ul>
   <% @recent_posts.each do |post| %>
-    <li><%= post.title %>
-        <%= post.img %>
+    <li>
+      <% if current_user %>
+        <%= link_to "#{post.title}", edit_post_path(post) %>
+      <% else %>
+        <%= link_to "#{post.title}", show_post_path(post) %>
+      <% end %>
+        <%= post.body %>
     </li>
+  <% end %>
 </ul>
+

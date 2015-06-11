@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  # before_action :require_authenticated_user :except => [:index]
+
   def index
     @posts = Post.all
   end
@@ -35,12 +37,16 @@ class PostsController < ApplicationController
     redirect_to post_url, notice: 'Post was deleted'
   end
 
+  def show
+    @post=Post.find(parms[:id])
+  end
+
   private
     def set_post
       @post = Post.find(params[:id])
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :image)
+      params.require(:post).permit(:user_id, :title, :body, :image)
     end
 end
