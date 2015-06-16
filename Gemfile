@@ -13,6 +13,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'puma'
+gem 'carrierwave'
+gem 'fog'
+
 
 group :development, :test do
   gem 'byebug'

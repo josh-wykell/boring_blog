@@ -6,11 +6,27 @@
       <th><%= @post.title %></th>
     </tr>
   </thead>
+  <tfoot>
+    <tr>
+      <th>Tags</th>
+    </tr>
+    <tr>
+      <td><%= @post.all_tags %></td>
+    </tr>
+  </tfoot>
   <tbody>
+    <tr>
+      <td>
+        <%= link_to image_tag(@post.avatar.url, :size => '408x544') %>
+      </td>
+    </tr>
     <tr>
       <td><%= @post.body %></td>
     </tr>
   </tbody>
 </table>
 
-<%= link_to 'Boring Main', root_path %>
+<% if current_user %>
+  <%= link_to 'edit', edit_post_path %>
+<% end %>
+

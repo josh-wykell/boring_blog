@@ -1,9 +1,10 @@
 class Post < ActiveRecord::Base
   has_many :comments
   has_many :taggings
-  has_many :tags, through: => :taggings
+  has_many :tags, :through => :taggings
   accepts_nested_attributes_for :comments
   belongs_to :user
+  mount_uploader :avatar, AvatarUploader
 
    def all_tags=(names)
     self.tags = names.split(",").map do |name|
@@ -15,3 +16,5 @@ class Post < ActiveRecord::Base
     self.tags.map(&:name).join(", ")
   end
 end
+
+

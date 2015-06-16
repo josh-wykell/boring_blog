@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     email, password = params.values_at(:email, :password)
-    user = User.find_by(email: email).try(:authenticate, password)
+    user = User.find_by(email: email).try(:authenticate, password)  
 
     if user 
       session[:user_id] = user.id

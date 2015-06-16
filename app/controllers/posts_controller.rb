@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
-  before_action :require_authenticated_user, :except => [:index]
+  before_action :require_authenticated_user, :except => [:index, :show]
 
   def index
     @posts = Post.all
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find(parms[:id])
+    @post=Post.find(params[:id])
   end
 
   private
@@ -47,6 +47,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:user_id, :title, :body, :image, :all_tags)
+      params.require(:post).permit(:user_id, :title, :body, :avatar, :all_tags)
     end
 end
