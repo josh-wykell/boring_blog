@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post.comments.create(comment_params)
-    redirect_to show_post_path(@post), notice: "comment added"
+    redirect_to post_path(@post), notice: "comment added"
   end
 
   private

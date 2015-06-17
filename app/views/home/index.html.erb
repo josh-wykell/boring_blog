@@ -5,9 +5,9 @@
 <ul>
   <% @recent_posts.each do |post| %>
     <li>
-    <%= link_to image_tag(post.avatar.thumb.url, :size => '32x32') %>
-    <%= link_to "#{post.title}", post_path(post) %>
-    <%= post.body %>
+      <%= link_to image_tag(post.avatar.thumb.url, :size => '32x32') %>
+      <%= link_to "#{post.title}", post_path(post) %>
+      <%= truncate post.body, length: 90, separator: ' ' %>
       <% if current_user %>
         <%= link_to 'edit', edit_post_path(post) %>
       <% end %>

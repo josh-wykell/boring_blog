@@ -3,18 +3,9 @@
 <table>
   <thead>
     <tr>
-      <th><%= @post.title %></th>
+      <th><h3><%= @post.title %></h3></th>
     </tr>
   </thead>
-  <tfoot>
-    <tr>
-      <th>Tags</th>
-    </tr>
-    <tr>
-      <td><%= @post.all_tags %></td>
-    </tr>
-  </tfoot>
-  <tbody>
     <tr>
       <td>
         <%= link_to image_tag(@post.avatar.url, :size => '408x544') %>
@@ -23,11 +14,47 @@
     <tr>
       <td><%= @post.body %></td>
     </tr>
+    <tr> </tr>
+    <tr> </tr>
+    <tr> </tr>
+    <tr> </tr>
   </tbody>
 </table>
+
+<h5>Tags:</h5><p><%= @post.all_tags %></p>
+
+<h4>Comments:</h4>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.body %></p>
+      <p class="author">by <%= comment.author %> on <%= comment.created_at.to_s(:short) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<h5>add a comment</h5>
+
+<%= form_for(@post.comments.new, :url => comments_path(@post)) do |f| %>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <div class="field">
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <% if current_user %>
   <%= link_to 'edit', edit_post_path %>
   <%= link_to 'delete', post_path, method: :delete, data: { confirm: 'Are you sure?' }  %>
 <% end %>
+
 
