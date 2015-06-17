@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.authorize_with(request.env["omniauth.auth"])
     if user
       session[:user_id] = user.id
-      redirect_to root_path :notice "Loggin Successful"
+      redirect_to root_path 
     else
       redirect_to root_path, :notice => "Fail."
     end
