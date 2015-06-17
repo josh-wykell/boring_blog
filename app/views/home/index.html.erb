@@ -5,11 +5,11 @@
 <ul>
   <% @recent_posts.each do |post| %>
     <li>
-    <%= link_to image_tag(post.avatar.url, :size => '32x32', :class => 'img-thumbnail') %>
-    <%= link_to "#{post.title}", show_post_path(post) %>
+    <%= link_to image_tag(post.avatar.thumb.url, :size => '32x32') %>
+    <%= link_to "#{post.title}", post_path(post) %>
     <%= post.body %>
       <% if current_user %>
-          <%= link_to 'edit', edit_post_path(post) %>
+        <%= link_to 'edit', edit_post_path(post) %>
       <% end %>
     </li>
   <% end %>
