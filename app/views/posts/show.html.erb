@@ -21,7 +21,7 @@
   </tbody>
 </table>
 
-<h5>Tags:</h5><p><%= @post.all_tags %></p>
+<h5>Tags:</h5><p><%=raw tag_links(@post.all_tags)%></p>
 
 <h4>Comments:</h4>
 

@@ -4,8 +4,12 @@ class PostsController < ApplicationController
   before_action :require_authenticated_user, :except => [:index, :show]
 
   def index
+  if params[:tag]
+    @posts = Post.tagged_with(params[:tag])
+  else
     @posts = Post.all
   end
+end
 
   def new
     @post = Post.new
