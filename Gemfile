@@ -17,6 +17,7 @@ gem 'puma'
 gem 'carrierwave'
 gem 'fog'
 gem "mini_magick"
+gem 'omniauth-github'
 
 
 group :development, :test do
