@@ -28,5 +28,6 @@
 
 <% if current_user %>
   <%= link_to 'edit', edit_post_path %>
+  <%= link_to 'delete', post_path, method: :delete, data: { confirm: 'Are you sure?' }  %>
 <% end %>
 
