@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   def require_authenticated_user
     unless current_user
       redirect_to :root, :notice => "Authentication Required."
+    end
   end
 
   protected
