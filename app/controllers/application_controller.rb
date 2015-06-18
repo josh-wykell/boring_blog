@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  def require_authenticated_user
+    unless current_user
+      redirect_to :root, :notice => "Authentication Required."
+  end
+
   protected
 
   def current_user
