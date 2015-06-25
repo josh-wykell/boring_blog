@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-#a comment
+
 gem 'rails', '4.2.1'
 gem 'pg'
 
@@ -19,7 +19,7 @@ gem 'carrierwave'
 gem 'fog'
 gem "mini_magick"
 gem 'omniauth-github'
-
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   gem 'byebug'

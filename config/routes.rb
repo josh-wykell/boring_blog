@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
   resources :comments, :only => [:create]
+  resources :charges
   resource :session, :only => [:create, :destroy]
   
   get "/auth/:provider/callback" => "sessions#create"
