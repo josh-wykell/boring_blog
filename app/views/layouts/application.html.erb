@@ -43,7 +43,11 @@
             <button type="submit" class="btn btn-default"><%= link_to "Sign out", signout_path%> </button>
           </form>
         <% end %>
+        </div>
+      </div>
+    </div>
   </nav>
+
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
@@ -51,28 +55,29 @@
         <%= msg %>
       <% end %>
     <% end %>
+  </div>
 
-    <%= yield %>
+  <%= yield %>
     
-    <div id="footer">
-      <div class="footer">
-        <div class="footer_text">
-          <p class="muted credit"> a jlistens app </p>
-          <%= form_tag charges_path do %>
-            <article>
-              <p>Make a donation to support the blog</p>
-              <label class="amount">
-                <span>Amount: $5.00</span>
-              </label>
-            </article>
-
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                    data-description="A month's subscription"
-                    data-amount="500"></script>
-          <% end %>
-        </div>
-      </div>
+  <div class="footer">
+    <div class="footer_left">
+      <p class="muted credit"> a jlistens app </p>
+    </div>
+    <div class="footer_right blog_form">
+      <%= form_tag charges_path do %>
+        <article>
+          <p>Make a donation to support the blog</p>
+          <label class="amount">
+            <span>Amount: $5.00</span>
+          </label>
+        </article>
+    </div>
+    <div class="footer_right blog_button">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="A month's subscription"
+                data-amount="500"></script>
+      <% end %>
     </div>
   </div>
 </body>
